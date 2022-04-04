@@ -5,43 +5,39 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 #SingleInstance, force
 SendMode, event
 SetKeyDelay, 0, 51
-
-refreshtime := 1.20
-weapons := 5
-waitpersec := refreshtime*1000/weapons
-
-+LButton::
-
-    FireArr := [3, 4, 5, 6]
-    i:=1
-    loop{
-        wgrp := FireArr[i]
-        send, %wgrp%
-        sleep 100
-
-        i++
-        if (i > 4){
-            i :=1
-        }
-        sleep waitpersec-100
-        if !GetKeyState("LButton", "P")
-            break
-    }
-
-Return
+refreshtime := 1.4
+FireArr := [1,3,4,5,6]
+waitpersec := (refreshtime*1000/FireArr.Length()) 
+split := waitpersec/2
 
 #IfWinActive, ahk_Class CryENGINE
-    LButton::
+    RButton::
+        i:=1
+        loop{
+            wgrp := FireArr[i]
+            send, %wgrp%
+            sleep, split
+            ; send, %wgrp%
+            ; sleep, waitpers-split
+            ; sleep, %waitpers%
+            i++
+            if (i >FireArr.Length()){
+                i :=1
+            }
+            if !GetKeyState("RButton", "P")
+                break
+        }
+    Return
+
+    +LButton::
         FireWeapons(waitpersec)
     Return
 
-
-
-FireWeapons(waitps){
-    loop{
-        send, {LButton} 
-        Sleep, waitps*.5
-        if !GetKeyState("LButton", "P")
-            break
+    FireWeapons(waitps){
+        loop{
+            send, {LButton} 
+            Sleep, waitps
+            if !GetKeyState("LButton", "P")
+                break
+        }
     }
-}
