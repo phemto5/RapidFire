@@ -8,7 +8,7 @@ SetKeyDelay, 0, 51
 refreshtime := 0.72
 FireArr := [5, 6]
 waitpersec := (refreshtime*100/FireArr.Length()) 
-split := waitpersec/2
+split := waitpersec*.75
 
 #IfWinActive, ahk_Class CryENGINE
     RButton::

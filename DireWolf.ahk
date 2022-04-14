@@ -4,22 +4,29 @@ SendMode Input ; Recommended for new scripts due to its superior speed and relia
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 #SingleInstance, force
 SendMode, event
-SetKeyDelay, 0, 51
-refreshtime := 1.4
+pressTime := 51
+SetKeyDelay, 0, pressTime
+refreshtime :=1.45-0.052
 FireArr := [1,3,4,5,6]
 waitpersec := (refreshtime*1000/FireArr.Length()) 
-split := waitpersec/2
+split := waitpersec ;(waitpersec/2)
+; waitpersec = split ;+pressTime
+mod := -(pressTime*2)
+; waitpersec += mod
 
+; waitpersec := split
+
+i:=1
 #IfWinActive, ahk_Class CryENGINE
     RButton::
-        i:=1
         loop{
             wgrp := FireArr[i]
             send, %wgrp%
-            sleep, split
+            sleep, %split%
             ; send, %wgrp%
-            ; sleep, waitpers-split
-            ; sleep, %waitpers%
+            ; sleep, %split%
+            ; send, %wgrp%
+            ; sleep, waitpersec-pressTime
             i++
             if (i >FireArr.Length()){
                 i :=1
@@ -30,13 +37,13 @@ split := waitpersec/2
     Return
 
     +LButton::
-        FireWeapons(waitpersec)
+        FireWeapons(waitpersec+0)
     Return
 
     FireWeapons(waitps){
         loop{
-            send, {LButton} 
-            Sleep, waitps
+            send, 6 
+            Sleep, %waitps%
             if !GetKeyState("LButton", "P")
                 break
         }
