@@ -6,29 +6,28 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 SendMode, event
 pressTime := 51
 SetKeyDelay, 0, pressTime
-refreshtime := 0.72-0.119
-FireArr := [5, 6]
-waitpersec := (refreshtime*1000/FireArr.Length())*1.1
+refreshtime := 1.45-0.239
+FireArr := [6]
+waitpersec := (refreshtime*1000/FireArr.Length())
 split := waitpersec/2
 
 i:=1
 #IfWinActive, ahk_Class CryENGINE
     RButton::
-        FireBurst(waitpersec,pressTime,FireArr)
+        FireBurst(split,pressTime)
+        ; FireWeapons(split)
     Return
 
     ; +RButton::
     ;     FireWeapons(waitpersec)
     ; Return
 
-    FireBurst(wps, ptime, fArr){
+    FireBurst(wps, ptime ){
         loop{
-            for ind,wgrp in fArr{
-                send, %wgrp%
-                sleep 50
-                send, %wgrp%
-            }
-            sleep, wps-(ptime*2)-100
+            send, 6
+            sleep wps
+            send, 6
+            sleep, wps
             if !GetKeyState("RButton", "P")
                 break
         }
@@ -36,8 +35,8 @@ i:=1
 
     FireWeapons(wps){
         loop{
-            send, 4
-            Sleep, wps
+            send, 6
+            Sleep, %wps%
             if !GetKeyState("RButton", "P")
                 break
         }
