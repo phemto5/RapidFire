@@ -5,10 +5,10 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 #SingleInstance, force
 SendMode, event
 SetKeyDelay, 0, 51
-refreshtime := 0.72
+refreshtime := 0.72- .072
 FireArr := [4, 5, 6]
 waitpersec := (refreshtime*1000/FireArr.Length()) 
-split := waitpersec*.85
+split := waitpersec/2
 
 #IfWinActive, ahk_Class CryENGINE
     RButton::
