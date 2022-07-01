@@ -3,9 +3,9 @@ SetWorkingDir, %A_ScriptDir%
 SendMode, event
 pressTime := 51
 SetKeyDelay, 0, %pressTime%
-refreshtime := 3-0.228
+refreshtime := 1.45 - 0.319
 weaponCount := 6
-firegroup := [4, 5, 6]
+firegroup := [ 5, 6]
 waitpersec := (refreshtime*1000/firegroup.Length()) 
 
 #IfWinActive, ahk_Class CryENGINE
@@ -14,10 +14,6 @@ waitpersec := (refreshtime*1000/firegroup.Length())
         ; fireAllWeaponGroups(waitpersec,firegroup)
     Return
 
-    ; +RButton::
-    ;     ; fireAllWeaponsFast(weaponCount)
-    ;     fireAllWeaponGroups(waitpersec,firegroup)
-    ; Return
 
     fireAllWeaponGroups(waitps,fg){
         i := 1
@@ -38,6 +34,6 @@ waitpersec := (refreshtime*1000/firegroup.Length())
     fireAllWeaponsFast(wc){
         loop, %wc% {
             send, 3 
-            Sleep, 51
+            Sleep, 110
         }
     }
