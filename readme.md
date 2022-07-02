@@ -14,3 +14,5 @@
 
 
 Please send in Pull request and what not. this is a hobby repo so that that for what it is, and I will work on it when it is fun.
+
+-- Also you will need to down load [AutoHotKey](https://www.autohotkey.com/)
