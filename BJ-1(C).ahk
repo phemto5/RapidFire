@@ -1,4 +1,7 @@
-﻿#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿; Blackjack 1(C)
+; Aj1820Z0|Ad|OGpQ0|OG|i^|Y?qQ0|OG|5P|5P|[<2|Y?rL0|M@|Y?sL0|M@|Y?t[0u[0vB0w>0;0;0
+
+#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.

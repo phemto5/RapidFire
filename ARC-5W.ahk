@@ -1,3 +1,6 @@
+; Archer 6W
+; A:682041|i^|Od|i^|7@p`0|[<2|7@|7@|\O|\O|\Oq`0|[<2|7@|7@|\O|\O|\O|\Or\0|7@|7@s\0|7@|7@tk0uk0vB0wD0<0<0
+
 #SingleInstance, Force
 SetWorkingDir, %A_ScriptDir%
 SendMode, event
