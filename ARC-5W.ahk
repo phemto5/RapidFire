@@ -9,41 +9,38 @@ SetKeyDelay, 0, %pressTime%
 refreshtime := 3.75-.45
 weaponCount := 9
 firegroup := [4, 5, 6]
-waitpersec := (refreshtime*1000/firegroup.Length()) 
+waitpersec := (refreshtime*1000/firegroup.Length())
 
 #IfWinActive, ahk_Class CryENGINE
     RButton::
-        
-        fireAllWeaponsFast(weaponCount)
-
+        ; FireInBursts()
+        FireInSequesnce()
     Return
 
-    +RButton::
-
-        fireAllWeaponGroups(waitpersec,firegroup)
-
-    Return
-    
-    fireAllWeaponGroups(waitps,fg){
-        i := 1
+    FireInSequesnce()
+    {
         loop, {
-            wpg := fg[i]
-            ; TrayTip, Loop, %wpg% - %i% - %waitps%, 10
-            send, %wpg% 
-            sleep, 200
-            i++
-            if (i >fg.Length()){
-                i :=1
-            }
+            send, 3 
+            Sleep, waitpersec/weaponCount
             if !GetKeyState("RButton", "P"){
                 break
             }
         }
     }
 
-    fireAllWeaponsFast(wc){
-        loop, %wc% {
-            send, 3 
-            Sleep, 15 
+    FireInBursts(){
+        i:=1
+        loop, {
+            wgrp := firegroup[i]
+            send, %wgrp%
+            sleep, %waitpersec%
+            i++
+            if (i >firegroup.Length()){
+                i :=1
+            }            
+            if !GetKeyState("RButton", "P"){
+                break
+            }
         }
     }
+    

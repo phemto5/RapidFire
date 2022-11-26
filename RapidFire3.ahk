@@ -3,7 +3,7 @@ SetWorkingDir, %A_ScriptDir%
 SendMode, event
 pressTime := 51
 SetKeyDelay, 0, %pressTime%
-nap := 210 
+nap := 101
 ; 103 
 
 #IfWinActive, ahk_Class CryENGINE
@@ -23,12 +23,12 @@ nap := 210
     }
 
     .:: 
-        nap += 10
+        nap += 100
         ; TrayTip, Speed, %nap%, 240
     Return
 
     ,:: 
-        nap -= 10
+        nap -= 100
         ; TrayTip, Speed, %nap%, 240
     Return
 
