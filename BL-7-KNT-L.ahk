@@ -3,13 +3,13 @@ SetWorkingDir A_ScriptDir
 SendMode "Event"
 pressTime := 51
 SetKeyDelay 0, pressTime
-refreshtime := 3.75-.112
-waitpersec := ((refreshtime)*1000/12) 
-TrayTip waitpersec,"Speed"
+nap := (((3.5-.42)+(1-.3))*1000/6)
+
+TrayTip nap,"Speed"
 
 HotIfWinActive "ahk_Class, CryENGINE"
 RButton:: {
-    fireAllWeaponsFast(waitpersec)
+    fireAllWeaponsFast(nap)
     Return
 }
 fireAllWeaponsFast(n) {
@@ -22,3 +22,13 @@ fireAllWeaponsFast(n) {
         }
     }
 }
+; .:: {
+;     nap += 100
+;      TrayTip Speed, nap, 240
+;     Return
+; }
+; ,:: {
+;     nap -= 100
+;      TrayTip Speed, nap, 240
+;     Return
+; }

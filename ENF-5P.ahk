@@ -1,8 +1,8 @@
-﻿#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿; #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
-#SingleInstance, force
-SendMode, event
-SetKeyDelay, 0, 51
+#SingleInstance force
+; SendMode event
+SetKeyDelay 0, 51
 refreshtime := 0.72 -.13
 ; FireArr := [3, 4, 5, 6]
 ; waitpersec := (refreshtime*1000/FireArr.Length()) 
