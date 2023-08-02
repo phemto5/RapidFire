@@ -1,19 +1,15 @@
-; Black Knight
-; 0Ao4820@1|i^|i^|i^|Tdpg0|i^|]?|]?qg0|i^|]?|]?r`0|]?|i^s`0|i^|]?|i^ta0ua0vB0w<09090
-
 #SingleInstance Force
 SetWorkingDir A_ScriptDir
 SendMode "Event"
 pressTime := 51
 SetKeyDelay 0, pressTime
-refreshtime := 4 - 0.341
-duration := 1.1 - 0.15
-waitpersec := ((duration + refreshtime) * 1000 / 6)
+nap :=  500/4
 
-TrayTip waitpersec, "Speed"
+TrayTip nap,"Speed"
+
 HotIfWinActive "ahk_Class, CryENGINE"
 RButton:: {
-    fireAllWeaponsFast(waitpersec)
+    fireAllWeaponsFast(nap)
     Return
 }
 fireAllWeaponsFast(n) {

@@ -3,7 +3,7 @@ SetWorkingDir A_ScriptDir
 SendMode "Event"
 pressTime := 51
 SetKeyDelay 0, pressTime
-nap := ((4-.4)*1000/6)
+nap := (250)
 
 TrayTip nap,"Speed"
 
@@ -22,13 +22,3 @@ fireAllWeaponsFast(n) {
         }
     }
 }
-; .:: {
-;     nap += 100
-;      TrayTip Speed, nap, 240
-;     Return
-; }
-; ,:: {
-;     nap -= 100
-;      TrayTip Speed, nap, 240
-;     Return
-; }
