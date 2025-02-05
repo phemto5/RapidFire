@@ -1,23 +1,20 @@
-﻿#SingleInstance Force
+#Requires AutoHotkey v2.0 
+#SingleInstance Force
 SetWorkingDir A_ScriptDir
 SendMode "Event"
 pressTime := 51
 SetKeyDelay 0, pressTime
-pauseTime := 51
-weaponCount := 3
-nap := ((1000 - (weaponCount * 51)) / 3)
+nap := (900-90)/4
 
-TrayTip nap, "Speed"
+TrayTip nap,"Speed"
 
 HotIfWinActive "ahk_Class, CryENGINE"
 RButton:: {
-    fireAllWeaponsFast(nap, pauseTime)
-
+    fireAllWeaponsFast(nap)
+    Return
 }
-fireAllWeaponsFast(n, s) {
+fireAllWeaponsFast(n) {
     loop {
-        Send 3
-        Sleep s
         Send 3
         Sleep n
         if !GetKeyState("RButton", "P") {
